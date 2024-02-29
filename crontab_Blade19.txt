@@ -1,0 +1,5 @@
+# To set crontab, type:
+# sudo crontab -e -u your_username
+
+# Download ERA5 land everyday at 2:00 AM
+00 02 * * * /usr/bin/Rscript /mnt/vt3era5-land/ERA5-land/Hourly/R/Download_and_process_ERA5land_Blade19.sh
