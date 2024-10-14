@@ -60,5 +60,5 @@ for(dd in 1:length(dirs_daily)){
   rm(Files)
   
   # Remove the daily directory after copying files
-  # unlink(paste0(path_in, "/ERA5-land_processing/ERA5-land_daily/", dirs_daily[dd]), recursive = TRUE)
+  unlink(paste0(path_in, "/ERA5-land_processing/ERA5-land_daily/", dirs_daily[dd]), recursive = TRUE)
 } 
