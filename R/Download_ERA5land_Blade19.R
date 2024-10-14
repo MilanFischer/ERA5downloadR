@@ -1,4 +1,4 @@
-Path = "/mnt/vt3era5-land/ERA5-land/Hourly"
+Path = "/mnt/data_local/ERA5-land/Hourly"
 VARS = c(
   "10m_u_component_of_wind",
   "10m_v_component_of_wind",
@@ -8,6 +8,9 @@ VARS = c(
   "total_precipitation",
   "surface_solar_radiation_downwards"
 )
+
+# START = "2022-11-30"
+# END = "2022-12-02"
 
 START = Sys.Date()-7-6
 END = Sys.Date()-7
@@ -34,7 +37,8 @@ for(V in 1:length(VARS)){
     request <- list(
       nocache            = round(as.numeric(Sys.time()), digits=0),
       dataset_short_name = "reanalysis-era5-land",
-      format             = "netcdf",
+      data_format        = "netcdf",
+      download_format    = "unarchived",
       variable           = VAR,
       year               = YEAR,
       month              = MONTH,
@@ -82,7 +86,8 @@ for(V in 1:length(VARS)){
       request <- list(
         nocache            = round(as.numeric(Sys.time()), digits=0),
         dataset_short_name = "reanalysis-era5-land",
-        format             = "netcdf",
+        data_format        = "netcdf",
+        download_format    = "unarchived",
         variable           = VAR,
         year               = YEAR,
         month              = MONTH,

@@ -3,9 +3,9 @@ suppressMessages(library(terra))
 
 args=commandArgs(trailingOnly=TRUE)
 
-# # Uncomment for troubleshooting
+# Uncomment for troubleshooting
 # cat(args,file='args.txt')
-# string='WS10_avg 2 2023_08_01_10m_u_component_of_wind.nc 2023_08_01_10m_v_component_of_wind.nc /mnt/vt3era5-land/ERA5-land/Hourly/10m_u_component_of_wind /mnt/vt3era5-land/ERA5-land/Hourly/10m_v_component_of_wind u10 v10 0.1 mean 1 0 ERA5-land Linux'
+# string='P_sum 1 2024_10_07_total_precipitation.nc /mnt/data_local/ERA5-land/Hourly/total_precipitation tp 0.1 sum 1000 0 ERA5-land Linux'
 # args=unlist(strsplit(string,split=' '))
 # stop()
 
@@ -61,8 +61,8 @@ if(n_inputs==1){
   Input<-nc_open(paste0(path_1,'/',File_1))
   Data<-rast(paste0(path_1,'/',File_1))
   
-  Origin=gsub("hours since ","",Input[['dim']][['time']][['units']]); Origin=as.POSIXct(Origin,tz="GMT")
-  Date=as.character(Origin+Input[['dim']][['time']][['vals']]*3600); Date=strftime(Date, format = "%Y-%m-%d",tz="UTC")[1]
+  Origin=gsub("seconds since ","",Input[['dim']][['valid_time']][['units']]); Origin=as.POSIXct(Origin,tz="GMT")
+  Date=as.character(Origin+Input[['dim']][['valid_time']][['vals']]); Date=strftime(Date, format = "%Y-%m-%d",tz="UTC")[1]
 
   Name=Input$var[[ID_1]]$longname
 
@@ -121,15 +121,15 @@ if(n_inputs==1){
   Input_1<-nc_open(paste0(path_1,'/',File_1))
   Data_1<-rast(paste0(path_1,'/',File_1))
 
-  Origin=gsub("hours since ","",Input_1[['dim']][['time']][['units']]); Origin=as.POSIXct(Origin,tz="GMT")
-  Date_1=as.character(Origin+Input_1[['dim']][['time']][['vals']]*3600); Date_1=strftime(Date_1, format = "%Y-%m-%d",tz="UTC")[1]
+  Origin=gsub("seconds since ","",Input_1[['dim']][['valid_time']][['units']]); Origin=as.POSIXct(Origin,tz="GMT")
+  Date_1=as.character(Origin+Input_1[['dim']][['valid_time']][['vals']]); Date_1=strftime(Date_1, format = "%Y-%m-%d",tz="UTC")[1]
 
   # Read NetCDF file 2
   Input_2<-nc_open(paste0(path_2,'/',File_2))
   Data_2<-rast(paste0(path_2,'/',File_2))
 
-  Origin=gsub("hours since ","",Input_2[['dim']][['time']][['units']]); Origin=as.POSIXct(Origin,tz="GMT")
-  Date_2=as.character(Origin+Input_2[['dim']][['time']][['vals']]*3600); Date_2=strftime(Date_2, format = "%Y-%m-%d",tz="UTC")[1]
+  Origin=gsub("seconds since ","",Input_2[['dim']][['valid_time']][['units']]); Origin=as.POSIXct(Origin,tz="GMT")
+  Date_2=as.character(Origin+Input_2[['dim']][['valid_time']][['vals']]); Date_2=strftime(Date_2, format = "%Y-%m-%d",tz="UTC")[1]
 
   if(Date_1==Date_2){
     Date=Date_1

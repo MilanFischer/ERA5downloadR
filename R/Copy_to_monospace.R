@@ -2,15 +2,15 @@ rm(list = ls())
 
 monospace_path <- '/mnt/monospace-mendelu/ERA5-land/Hourly/ERA5-land_processing/ERA5-land_daily'
 
-# Years <- 1950:2021
+#Years <- 1950:2021
 Years=2024
 
 # Near real time
 NRT=TRUE
 
 # 'all' or some integer
-# N_files_to_copy='all'
 N_files_to_copy=6
+# N_files_to_copy='all'
 
 Dirs <- list.dirs(path = '../ERA5-land_processing/ERA5-land_daily', recursive = FALSE, full.names = FALSE)
 

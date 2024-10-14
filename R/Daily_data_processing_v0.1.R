@@ -237,7 +237,7 @@ if(n_inputs==1){
     G<-0
     rs<-70
     ra<-208/u2
-    cp<-cp*10^(-6) # MJ kg-1 K-1
+    cp<-cp*10^(-6) # MJ kg?1 K?1
     
     # FAO56 reference grass evapotranspiration
     ETo<-((delta*(Rn-G)+24*3600*rho*cp*VPD/ra)/(delta+gamma*(1+rs/ra)))/lambda

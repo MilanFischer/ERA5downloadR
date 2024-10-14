@@ -1,20 +1,21 @@
 rm(list=ls())
 
 # This is important when running from Cron
-setwd('/mnt/vt3era5-land/ERA5-land/Hourly/R')
+setwd('/mnt/data_local/ERA5-land/Hourly/R')
 
 source('Wait_v0.1.R')
 
 # Global parameters
 OS<-'Linux'  # 'Linux' or 'Windows' 
 n_proc=3
-days_back=6 #6 Integer for specific number of days from the last day or 'all' for all days
+days_back=6 # Integer for specific number of days from the last day or 'all' for all days, use 6 by for normal operaration
 waitingTime=60
 product='ERA5-land' # 'ERA5' or 'ERA5-land'
 time_step='both' # 'hourly' or 'daily' or 'both'
 last_days_to_skip=0
 
-path_in='/mnt/vt3era5-land/ERA5-land/Hourly'
+# path_in='/mnt/data/ERA5-land_1950-1980'
+path_in='/mnt/data_local/ERA5-land/Hourly'
 
 # Does not need to be edited below
 #########################################################################################################################
